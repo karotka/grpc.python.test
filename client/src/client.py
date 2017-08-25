@@ -8,7 +8,7 @@ import test_pb2_grpc
 # CLIENT
 
 def run():
-    channel = grpc.insecure_channel('localhost:50051')
+    channel = grpc.insecure_channel('10.0.4.99:50000')
     server = test_pb2_grpc.TestStub(channel)
 
     data = test_pb2.HelloRequest(
