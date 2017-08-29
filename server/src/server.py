@@ -2,20 +2,21 @@
 from concurrent import futures
 import time
 import grpc
-
 import logging
-from config import c
 
-import test_pb2
+from config import c
+from test import Test
+from login import Login
+
 import test_pb2_grpc
 
-from test import Test
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # SERVER
 def registerMethods(server):
     test_pb2_grpc.add_TestServicer_to_server(Test(), server)
+    test_pb2_grpc.add_LoginServicer_to_server(Login(), server)
 
 def serve():
     _ONE_DAY_IN_SECONDS = 60 * 60 * 24
